@@ -420,11 +420,11 @@ Puppet::Type.type(:firewall).provide :iptables, parent: Puppet::Provider::Firewa
     properties[:ensure] != :absent
   end
 
-  def duplicate_rule?(rule)
-    self.class.instances.each_with_object({ count: 0 }) do |r, obj|
-      obj[:count] += 1 if r.name == rule
-      return true if obj[:count] > 1
-    end
+  def duplicate_rule?(_rule)
+    # self.class.instances.each_with_object({ count: 0 }) do |r, obj|
+    #   obj[:count] += 1 if r.name == rule
+    #   return true if obj[:count] > 1
+    # end
     false
   end
 
